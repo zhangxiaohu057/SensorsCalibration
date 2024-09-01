@@ -23,6 +23,7 @@
 namespace cameracalib {
 
 bool CalibrationBoardTool::ChessBoardCalibration(
+    cv::Mat image,
     const std::vector<std::vector<float>> &gray_img,
     const InputParam &calibration_inputs, const std::string &output_json_path,
     CalibrationOutputParams *calibration_result) {
@@ -60,6 +61,7 @@ bool CalibrationBoardTool::ChessBoardCalibration(
     return false;
   }
   // display
+  display_img_=setDisplay(image); 
   if (display_img_) {
     std::vector<cv::Scalar> color_box;
     color_box.emplace_back(cv::Scalar(235, 80, 80));
@@ -77,7 +79,7 @@ bool CalibrationBoardTool::ChessBoardCalibration(
     }
     cv::imshow("chessboard", display_img);
     cv::waitKey();
-    cv::imwrite(output_dir_ + "/chessboard.png", display_img);
+    cv::imwrite(output_json_path + "/chessboard.png", display_img);
   }
 
   // sort by x

@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
   params.calibration_board_type = type;
   bool sta = false;
   if (type == 0)
-    sta = calibrator.ChessBoardCalibration(gray_vec, params, output_dir,
+    sta = calibrator.ChessBoardCalibration(image, gray_vec, params, output_dir,
                                            &outputs);
   else if (type == 1)
     sta = calibrator.VerticalBoardCalibration(gray_vec, params, output_dir,

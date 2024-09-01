@@ -78,7 +78,7 @@ struct CalibrationOutputParams {
 
 class CalibrationBoardTool {
 public:
-  CalibrationBoardTool() { display_img_ = false; }
+  CalibrationBoardTool() { display_img_ = true; }
 
   bool setDisplay(const cv::Mat &img) {
     image_ = img;
@@ -94,7 +94,8 @@ public:
    * @param CalibrationOutputParams [out] specify the calibration result .
    * @return flag that indicates succeed or failed.
    */
-  bool ChessBoardCalibration(const std::vector<std::vector<float>> &gray_img,
+  bool ChessBoardCalibration(cv::Mat image,
+                             const std::vector<std::vector<float>> &gray_img,
                              const InputParam &calibration_inputs,
                              const std::string &output_json_path,
                              CalibrationOutputParams *calibration_result);
