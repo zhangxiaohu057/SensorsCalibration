@@ -20,6 +20,7 @@ bool IntrinsicCalibration::Calibrate(const std::string &img_dir_path,
     }
     undistort_image_path_ = img_dir_path_ + "undistorted/";
     selected_image_path_ = img_dir_path_ + "selected/";
+    draw_image_path = img_dir_path_ + "draw_image/";
     std::cout << "image path: " << img_dir_path_ << std::endl;
     DIR *dir;
     struct dirent *ptr;
@@ -95,6 +96,17 @@ bool IntrinsicCalibration::Calibrate(const std::string &img_dir_path,
                 cv::drawChessboardCorners(input_image, corner_size_, 
                                         image_corners, whether_found);
                 cv::imshow(file_names[i], input_image);
+
+            if (opendir(draw_image_path.c_str()) == nullptr){
+               char command[1024];
+               sprintf(command, "mkdir -p %s", draw_image_path.c_str());
+               system(command);
+               printf("Create dir: %s\n", draw_image_path.c_str());       
+            }
+            std::string output_file_path = draw_image_path + file_names[i];      
+            cv::imwrite(output_file_path, input_image);
+
+            
                 // cv::waitKey(50);
                 cv::waitKey(50);
             }

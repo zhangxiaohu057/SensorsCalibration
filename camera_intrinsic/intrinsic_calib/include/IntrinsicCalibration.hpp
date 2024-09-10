@@ -53,6 +53,7 @@ private:
     // output undistorted image path
     std::string undistort_image_path_;
     std::string selected_image_path_;
+    std::string draw_image_path;
 
     // intrinsic params
     cv::Mat camera_intrinsic_;
