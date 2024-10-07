@@ -241,6 +241,10 @@ class CalibrationGui:
 	def applyScale(self):
 		scale_x = self.calibration_scale[0] / float(self.image.shape[1])
 		scale_y = self.calibration_scale[1] / float(self.image.shape[0])
+		print("scale_x= ", scale_x)
+		print("scale_y= ", scale_y)
+		print("self.image.shape[1]= ", self.image.shape[1])
+		print("self.image.shape[0]= ", self.image.shape[0])
 		self.vanishing_pt_x = self.vanishing_pt_x_origin * scale_x
 		self.vanishing_pt_y = self.vanishing_pt_y_origin * scale_y
 		# apply scale to labeled image points

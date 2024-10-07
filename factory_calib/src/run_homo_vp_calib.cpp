@@ -53,6 +53,7 @@ int main(int argc, char **argv) {
   cv::Mat gray, gray_img;
   cv::cvtColor(image, gray, CV_BGR2GRAY);
   gray.convertTo(gray_img, CV_32F);
+  cv::imwrite(output_dir + "/gray.png", gray);
 
   std::vector<std::vector<float>> gray_vec;
   cvmat2stdvec(gray_img, gray_vec);
